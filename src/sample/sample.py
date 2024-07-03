@@ -91,7 +91,7 @@ class Sample:
         self.calculate_accumulated_frequency_of_each_interval()
         self.calculate_relative_frequency_of_each_interval()
 
-    def show_data_formatted(self):
+    def data_formatted(self):
         data_to_show = ""
         data_to_show += ">> Intervalos\n"
         for interval in self.__intervals:

@@ -12,4 +12,4 @@ if __name__ == "__main__":
     rol.sort()
     sample = Sample(rol)
     sample.setup()
-    print(sample.show_data_formatted())
+    print(sample.data_formatted())
