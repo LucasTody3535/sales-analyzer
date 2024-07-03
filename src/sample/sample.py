@@ -41,7 +41,7 @@ class Sample:
         after_mode_class_frequency = self.__intervals[mode_class + 1].absolute_frequency() if mode_class + 1 < ls else 0
         delta_one = self.__intervals[mode_class].absolute_frequency() - before_mode_class_frequency
         delta_two = self.__intervals[mode_class].absolute_frequency() - after_mode_class_frequency
-        mode = apply_mode_formula(self.__intervals[mode_class].inferior_limit(), delta_one, delta_two, 500)
+        mode = apply_mode_formula(self.__intervals[mode_class].lower_limit(), delta_one, delta_two, 500)
         return round(mode, 2)
 
     def calculate_accumulated_frequency_of_each_interval(self):
@@ -68,18 +68,18 @@ class Sample:
 
     def define_intervals(self):
         # Calculates the amplitude of the first element
-        inferior_limit = self.__rol[0]
+        lower_limit = self.__rol[0]
         superior_limit = self.__rol[0] + self.__amplitude
-        absolute_frequency = sum((inferior_limit <= i < superior_limit for i in self.__rol))
-        self.add_interval(inferior_limit, superior_limit, absolute_frequency)
+        absolute_frequency = sum((lower_limit <= i < superior_limit for i in self.__rol))
+        self.add_interval(lower_limit, superior_limit, absolute_frequency)
 
         print(self.__classes_quantity)
         # Calculates the amplitude of other classes in the sample
         for a in range(self.__classes_quantity - 1):
-            inferior_limit += self.__amplitude
-            superior_limit = inferior_limit + self.__amplitude
-            absolute_frequency = sum((inferior_limit <= i < superior_limit for i in self.__rol))
-            self.add_interval(inferior_limit, superior_limit, absolute_frequency)
+            lower_limit += self.__amplitude
+            superior_limit = lower_limit + self.__amplitude
+            absolute_frequency = sum((lower_limit <= i < superior_limit for i in self.__rol))
+            self.add_interval(lower_limit, superior_limit, absolute_frequency)
 
     def setup(self):
         self.calculate_range()
@@ -103,7 +103,7 @@ class Sample:
         data_to_show = ""
         data_to_show += ">> Intervalos\n"
         for interval in self.__intervals:
-            data_to_show += (f' Intervalo: {interval.inferior_limit()} |- {interval.superior_limit()}\n'
+            data_to_show += (f' Intervalo: {interval.lower_limit()} |- {interval.superior_limit()}\n'
                             f'  Valor: {interval.calculate_mean()}\n'
                             f'  Frequência Absoluta: {interval.absolute_frequency()}\n'
                             f'  Frequência Acumulada: {interval.accumulated_frequency()}\n'
