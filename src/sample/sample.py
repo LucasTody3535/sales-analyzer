@@ -27,7 +27,7 @@ class Sample:
     def calculate_total_elements(self):
         intervals_frequencies = []
         for interval in self.__intervals:
-            intervals_frequencies.append(interval.absolute_frequency())
+            intervals_frequencies.append(interval.total_frequency())
         return sum(intervals_frequencies, 0)
 
     def calculate_mean(self):
@@ -37,18 +37,18 @@ class Sample:
     def calculate_mode(self):
         mode_class = find_mode_class(self.__intervals)
         ls = len(self.__intervals)
-        before_mode_class_frequency = self.__intervals[mode_class - 1].absolute_frequency() if mode_class - 1 > 0 else 0
-        after_mode_class_frequency = self.__intervals[mode_class + 1].absolute_frequency() if mode_class + 1 < ls else 0
-        delta_one = self.__intervals[mode_class].absolute_frequency() - before_mode_class_frequency
-        delta_two = self.__intervals[mode_class].absolute_frequency() - after_mode_class_frequency
+        before_mode_class_frequency = self.__intervals[mode_class - 1].total_frequency() if mode_class - 1 > 0 else 0
+        after_mode_class_frequency = self.__intervals[mode_class + 1].total_frequency() if mode_class + 1 < ls else 0
+        delta_one = self.__intervals[mode_class].total_frequency() - before_mode_class_frequency
+        delta_two = self.__intervals[mode_class].total_frequency() - after_mode_class_frequency
         mode = apply_mode_formula(self.__intervals[mode_class].lower_limit(), delta_one, delta_two, 500)
         return round(mode, 2)
 
     def calculate_accumulated_frequency_of_each_interval(self):
-        self.__intervals[0].calculate_accumulated_frequency(self.__intervals[0].absolute_frequency())
+        self.__intervals[0].calculate_accumulated_frequency(self.__intervals[0].total_frequency())
         for interval in self.__intervals[1:]:  # All elements but the first one(slicing)
             frequency = self.__intervals[self.__intervals.index(interval) - 1].accumulated_frequency()
-            interval.calculate_accumulated_frequency(frequency + interval.absolute_frequency())
+            interval.calculate_accumulated_frequency(frequency + interval.total_frequency())
 
     def calculate_relative_frequency_of_each_interval(self):
         elements = self.calculate_total_elements()
@@ -105,7 +105,7 @@ class Sample:
         for interval in self.__intervals:
             data_to_show += (f' Intervalo: {interval.lower_limit()} |- {interval.upper_limit()}\n'
                             f'  Valor: {interval.calculate_mean()}\n'
-                            f'  Frequência Absoluta: {interval.absolute_frequency()}\n'
+                            f'  Frequência Absoluta: {interval.total_frequency()}\n'
                             f'  Frequência Acumulada: {interval.accumulated_frequency()}\n'
                             f'  Frequência Relativa: {interval.relative_frequency()}%\n')
         data_to_show += (f'>> Amplitude das classes: {self.__amplitude}\n'
