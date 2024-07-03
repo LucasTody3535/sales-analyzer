@@ -5,15 +5,15 @@ from ..utils.mode.mode_utils import find_mode_class, apply_mode_formula
 
 
 class Sample:
-    def __init__(self, __rol: list[int], __classes_quantity: int = 0, __amplitude: int = 0):
-        self.__rol = __rol
+    def __init__(self, rol: list[int], classes_quantity: int = 0, amplitude: int = 0):
+        self.__rol = rol
         self.__intervals = list[Interval]()
         self.__range = 0
-        self.__amplitude = __amplitude
+        self.__amplitude = amplitude
         self.__mode = 0
         self.__mean = 0
         self.__median = 0
-        self.__classes_quantity = __classes_quantity
+        self.__classes_quantity = classes_quantity
 
     def add_interval(self, __inferior_limit: int, __superior_limit: int, __absolute_frequency: int):
         self.__intervals.append(Interval(__inferior_limit, __superior_limit, __absolute_frequency))
