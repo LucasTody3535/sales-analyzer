@@ -14,11 +14,11 @@ class Interval:
     def calculate_value(self):
         return self.calculate_mean() * self.__absoluteFrequency
 
-    def calculate_accumulated_frequency(self, __accumulated_frequency: int):
-        self.__accumulated_frequency = __accumulated_frequency
+    def calculate_accumulated_frequency(self, accumulated_frequency: int):
+        self.__accumulated_frequency = accumulated_frequency
 
-    def calculate_relative_frequency(self, __total: int):
-        self.__relative_frequency = round(self.__absoluteFrequency / __total * 100, 2)
+    def calculate_relative_frequency(self, total: int):
+        self.__relative_frequency = round(self.__absoluteFrequency / total  * 100, 2)
 
     def absolute_frequency(self):
         return self.__absoluteFrequency
