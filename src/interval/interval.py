@@ -1,5 +1,6 @@
 from statistics import mean
 
+
 class Interval:
     def __init__(self, lower_limit: int, upper_limit: int, total_frequency: int):
         self.__lower_limit = lower_limit
@@ -18,7 +19,7 @@ class Interval:
         self.__accumulated_frequency = accumulated_frequency
 
     def calculate_relative_frequency(self, total: int):
-        self.__relative_frequency = round(self.__total_frequency / total  * 100, 2)
+        self.__relative_frequency = round(self.__total_frequency / total * 100, 2)
 
     def total_frequency(self):
         return self.__total_frequency
