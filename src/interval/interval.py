@@ -1,11 +1,10 @@
 from statistics import mean
 
-
 class Interval:
-    def __init__(self, __inferior_limit: int, __superior_limit: int, __absolute_frequency: int):
-        self.__inferiorLimit = __inferior_limit
-        self.__superiorLimit = __superior_limit
-        self.__absoluteFrequency = __absolute_frequency
+    def __init__(self, inferior_limit: int, superior_limit: int, absolute_frequency: int):
+        self.__inferiorLimit = inferior_limit
+        self.__superiorLimit = superior_limit
+        self.__absoluteFrequency = absolute_frequency
         self.__accumulated_frequency = 0
         self.__relative_frequency = 0
 
