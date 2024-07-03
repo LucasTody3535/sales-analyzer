@@ -91,14 +91,6 @@ class Sample:
         self.calculate_accumulated_frequency_of_each_interval()
         self.calculate_relative_frequency_of_each_interval()
 
-    def show_main_data_formatted(self):
-        data_to_show = ""
-        data_to_show += (f'Range: {self.__range}\n'
-                         f'Amplitude: {self.__amplitude}\n'
-                         f'Quantidade de classes: {self.__classes_quantity}')
-        # res = (203 < i < 206 for i in self.__rol)
-        return data_to_show
-
     def show_data_formatted(self):
         data_to_show = ""
         data_to_show += ">> Intervalos\n"
@@ -109,6 +101,8 @@ class Sample:
                             f'  Frequência Acumulada: {interval.accumulated_frequency()}\n'
                             f'  Frequência Relativa: {interval.relative_frequency()}%\n')
         data_to_show += (f'>> Amplitude das classes: {self.__amplitude}\n'
+                         f'>> Range: {self.__range}\n'
+                         f'>> Quantidade de classes: {self.__classes_quantity}\n'
                          f'>> Maior valor: {self.calculate_mode()}\n'
                          f'>> Média dos valores: {self.calculate_mean()}')
 
