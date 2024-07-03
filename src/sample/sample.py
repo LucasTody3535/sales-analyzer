@@ -15,8 +15,8 @@ class Sample:
         self.__median = 0
         self.__classes_quantity = classes_quantity
 
-    def add_interval(self, inferior_limit: int, superior_limit: int, absolute_frequency: int):
-        self.__intervals.append(Interval(inferior_limit, superior_limit, absolute_frequency))
+    def add_interval(self, lower_limit: int, upper_limit: int, total_frequency: int):
+        self.__intervals.append(Interval(lower_limit, upper_limit, total_frequency))
 
     def calculate_total_elements_value(self):
         intervals_values = []
