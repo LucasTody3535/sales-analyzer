@@ -69,17 +69,17 @@ class Sample:
     def define_intervals(self):
         # Calculates the amplitude of the first element
         lower_limit = self.__rol[0]
-        superior_limit = self.__rol[0] + self.__amplitude
-        absolute_frequency = sum((lower_limit <= i < superior_limit for i in self.__rol))
-        self.add_interval(lower_limit, superior_limit, absolute_frequency)
+        upper_limit = self.__rol[0] + self.__amplitude
+        absolute_frequency = sum((lower_limit <= i < upper_limit for i in self.__rol))
+        self.add_interval(lower_limit, upper_limit, absolute_frequency)
 
         print(self.__classes_quantity)
         # Calculates the amplitude of other classes in the sample
         for a in range(self.__classes_quantity - 1):
             lower_limit += self.__amplitude
-            superior_limit = lower_limit + self.__amplitude
-            absolute_frequency = sum((lower_limit <= i < superior_limit for i in self.__rol))
-            self.add_interval(lower_limit, superior_limit, absolute_frequency)
+            upper_limit = lower_limit + self.__amplitude
+            absolute_frequency = sum((lower_limit <= i < upper_limit for i in self.__rol))
+            self.add_interval(lower_limit, upper_limit, absolute_frequency)
 
     def setup(self):
         self.calculate_range()
@@ -103,7 +103,7 @@ class Sample:
         data_to_show = ""
         data_to_show += ">> Intervalos\n"
         for interval in self.__intervals:
-            data_to_show += (f' Intervalo: {interval.lower_limit()} |- {interval.superior_limit()}\n'
+            data_to_show += (f' Intervalo: {interval.lower_limit()} |- {interval.upper_limit()}\n'
                             f'  Valor: {interval.calculate_mean()}\n'
                             f'  Frequência Absoluta: {interval.absolute_frequency()}\n'
                             f'  Frequência Acumulada: {interval.accumulated_frequency()}\n'
